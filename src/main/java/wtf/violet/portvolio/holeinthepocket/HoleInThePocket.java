@@ -1,5 +1,6 @@
 package wtf.violet.portvolio.holeinthepocket;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,11 @@ public final class HoleInThePocket extends JavaPlugin {
     @Override
     public void onEnable() 
     {
+        saveDefaultConfig();
+
+        final FileConfiguration config = getConfig();
+        config.addDefault("delaySeconds", 60);
+
         new StartScenarioCommand(this, (task) ->
         {
             for (final Player player : getServer().getOnlinePlayers())
@@ -29,7 +35,7 @@ public final class HoleInThePocket extends JavaPlugin {
 
                 stack.subtract(stack.getAmount());
             }
-        }, 20 * 60, false).register();
+        }, 20 * config.getInt("delaySeconds"), false).register();
     }
 
     /**

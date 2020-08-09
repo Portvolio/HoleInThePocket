@@ -1,10 +1,17 @@
 # Hole in the Pocket
 A random item is cleared from your inventory every minute.
 
-Original video by TapL:
-https://www.youtube.com/watch?v=w7A36nfHEvQ
+Original videos by TapL:
+* https://www.youtube.com/watch?v=w7A36nfHEvQ (delaySeconds = 60)
+* https://www.youtube.com/watch?v=p0hWmTwprZc (delaySeconds = 1)
 
 Built on the **Paper 1.16** API. Tested on **Paper 1.16.1 Build 134**.
+
+## Config
+```yaml
+# The amount of time in between each inventory clear
+delaySeconds: 60
+```
 
 ## Commands
 **/startscenario** &mdash; Starts the scenario. (`scenario.start`)
