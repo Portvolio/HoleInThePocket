@@ -5,9 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import wtf.violet.portvolio.common.StartScenarioCommand;
+import wtf.violet.portvolio.common.UtilPlayer;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public final class HoleInThePocket extends JavaPlugin {
@@ -26,7 +25,7 @@ public final class HoleInThePocket extends JavaPlugin {
         {
             for (final Player player : getServer().getOnlinePlayers())
             {
-                final ItemStack stack = findEligibleSlot(player);
+                final ItemStack stack = UtilPlayer.findRandomFilledSlot(player);
 
                 if (stack == null)
                 {
@@ -36,33 +35,6 @@ public final class HoleInThePocket extends JavaPlugin {
                 stack.subtract(stack.getAmount());
             }
         }, 20 * config.getInt("delaySeconds"), false).register();
-    }
-
-    /**
-     * Find a random slot of the player's inventory with an item in it
-     * @param player Player
-     * @return The ItemStack, null if none are found
-     */
-    private ItemStack findEligibleSlot(final Player player)
-    {
-        final List<ItemStack> stacks = new ArrayList<>();
-
-        for (final ItemStack stack : player.getInventory().getContents())
-        {
-            if (stack != null)
-            {
-                stacks.add(stack);
-            }
-        }
-
-        final int size = stacks.size();
-
-        if (size == 0)
-        {
-            return null;
-        }
-
-        return stacks.get(random.nextInt(size));
     }
 
 }
