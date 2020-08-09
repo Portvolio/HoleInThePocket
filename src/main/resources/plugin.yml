@@ -1,0 +1,10 @@
+name: HoleInThePocket
+version: ${project.version}
+main: wtf.violet.portvolio.holeinthepocket.HoleInThePocket
+api-version: 1.16
+authors: [violetwtf]
+website: https://violet.wtf
+commands:
+  startscenario:
+    description: Start the scenario
+    permission: scenario.start
